@@ -16,6 +16,33 @@
 
 ## 📋 À propos
 
+### 🎯 Vision & Objectif Scientifique
+
+Ce projet est une **initiative de recherche appliquée** visant à construire une **infrastructure intelligente de collecte et d'analyse de données automobiles**. L'objectif principal est d'accumuler un **dataset massif et structuré** pour servir de fondation à :
+
+- 🧠 **Graphes de Connaissances (Knowledge Graphs)** enrichis du domaine automobile
+- 🔄 **Systèmes RAG (Retrieval Augmented Generation)** intelligents pour réponses contextualisées
+- 🤖 **LLM fine-tuning** pour analyses spécialisées dans le marché automobile
+
+### 💡 Démarche Scientifique
+
+**Phase 1 (Actuelle) : Extraction & Structuration**
+- Collecte automatisée de milliers d'annonces automobiles
+- Structuration en schéma unifié exploitable
+- Construction de baseline dataset pour recherche
+
+**Phase 2 (Prévue) : Construction du Knowledge Graph**
+- Extraction d'entités (marques, modèles, prix, caractéristiques)
+- Construction de relations sémantiques
+- Enrichissement via LLM pour inférence
+
+**Phase 3 (Prévue) : RAG & LLM Application**
+- Intégration KG dans pipeline RAG
+- Développement de chatbot intelligent automobile
+- Évaluation fiabilité & explicabilité
+
+### 🏗️ Architecture Scientifique
+
 Ce projet démontre des **compétences avancées en web scraping** avec extraction automatique d'annonces automobiles. Il implémente des techniques **anti-détection sophistiquées** et génère un **rapport d'analyse interactif complet**.
 
 ### Compétences Démontrées
@@ -26,6 +53,39 @@ Ce projet démontre des **compétences avancées en web scraping** avec extracti
 - ✅ Génération de rapports HTML/CSS interactifs
 - ✅ Gestion de ressources (téléchargement d'images)
 - ✅ Automatisation et optimisation
+- ✅ **Données structurées pour ML/AI** (pré-traitement dataset)
+- ✅ **Fondations pour Knowledge Graphs** (relations entité-attribut-valeur)
+
+---
+
+## 🎓 Pertinence Académique & Recherche
+
+### 📚 Domaines de Recherche Couverts
+
+Ce projet couvre les fondations essentielles pour plusieurs axes de recherche actuels :
+
+| Domaine | Application | Pertinence |
+|---------|-------------|-----------|
+| **Knowledge Graphs** | Construction automatique d'ontologies automobiles | 🟥 Critique |
+| **RAG Systems** | Retrieval depuis dataset structuré + contexte | 🟥 Critique |
+| **NLP/LLM** | Extraction d'entités, résumé descriptions | 🟨 Important |
+| **Data Engineering** | Pipeline ETL robuste à large échelle | 🟨 Important |
+| **Uncertainty Quantification** | Mesure confiance dans données extraites | 🟩 Fondation |
+| **Information Extraction** | Entity/Relation extraction du domaine auto | 🟥 Critique |
+
+### 🔬 Verrous Scientifiques Adressés
+
+1. **Collecte de données massives et structurées**
+   - Comment extraire fiablement ~3000+ enregistrements?
+   - Gestion des données hétérogènes et bruitées
+
+2. **Normalisation et harmonisation**
+   - Alignement des schémas d'annonces disparates
+   - Construction d'une ontologie domaine automobile
+
+3. **Préparation pour Knowledge Graph**
+   - Identification d'entités et de relations
+   - Structuration pour représentation graphe (RDF/Property Graph)
 
 ---
 
@@ -85,6 +145,75 @@ Le rapport généré inclut :
 - 🔍 Recherche en temps réel
 - 📊 Filtres : Prix, Année, Énergie, Type vendeur
 - 🎨 Design moderne avec CSS responsive
+
+---
+
+## 🎯 **Pour les Encadrants de Thèse / Superviseurs**
+
+Ce projet constitue une **fondation solide pour recherche appliquée** en plusieurs domaines :
+
+### 🔬 **Opportunités de Recherche**
+
+#### 1. **Knowledge Graph Construction** 🧠
+- **Défi actuel** : Transformer dataset SQLite en Knowledge Graph structuré (RDF/Property Graph)
+- **Exemple recherche** : Extraction automatique d'ontologies automobile via LLM
+- **Publication potentielle** : "Automated Knowledge Graph Construction from Heterogeneous E-commerce Data using LLMs"
+
+#### 2. **RAG System Development** 🔄
+- **Défi** : Créer système RAG pour répondre à requêtes sur marché automobile
+- **Exemple** : "Pour quelle marque/modèle est-on le plus cher à mois âge?"
+- **Publication** : "Graph-Enhanced RAG for Domain-Specific Automotive Market Analysis"
+
+#### 3. **Entity/Relation Extraction** 📝
+- **Corpus** : 2,955 descriptions d'annonces naturelles
+- **Task** : Extraire entités (marque, modèle, prix) et relations sémantiques
+- **Benchmark** : Créer dataset annoté pour évaluation NER/RE en domaine automobile
+
+#### 4. **Uncertainty Quantification** 📊
+- **Problème** : Mesurer confiance dans données extraites (e.g., prix aberrants?)
+- **Application** : Quantification d'incertitude pour graphe de connaissances
+- **Pertinence** : Critique pour décisions critiques (compliance, audits)
+
+#### 5. **Scalability & Distributed Processing** 🚀
+- **Actuel** : ~3,000 enregistrements
+- **Objectif** : Passer à 100k+ enregistrements via Spark/Dask
+- **Application** : Production-ready data pipeline pour large-scale KG construction
+
+### 📈 **Points Forts pour Dossier de Thèse**
+
+| Aspect | Valeur Ajoutée |
+|--------|---|
+| **Dataset Real-World** | 2,955 enregistrements domaine automobile (vs données synthétiques) |
+| **Problème Multi-Facettes** | Combine scraping, structuration, extraction, visualisation |
+| **Scalabilité** | Architecture prête pour passage à échelle industrielle |
+| **Reproducibilité** | Code open-source, documentation complète, dépendances listées |
+| **Innovation** | Connexion explicite à domaines chauds (KG+RAG+LLM 2025) |
+| **Pertinence Industrie** | Applicable à supply chain, compliance, CRM, etc. |
+
+### 🎓 **Sujets de Thèse Potentiels**
+
+**Option 1 : Knowledge Graph & Semantics**
+- "Ontology Learning from Automotive E-commerce Data using Large Language Models"
+- Keywords: KG, ontology, LLM, extraction
+
+**Option 2 : RAG & Information Retrieval**
+- "Graph-Augmented Retrieval for Conversational Automotive Market Analysis"
+- Keywords: RAG, graph embedding, semantic search
+
+**Option 3 : Data Quality & Uncertainty**
+- "Uncertainty Quantification in Knowledge Graphs: Application to Automotive Market Data"
+- Keywords: uncertainty, Bayesian, epistemic uncertainty
+
+**Option 4 : NLP & Entity Extraction**
+- "Zero-shot Entity Relation Extraction for Knowledge Graph Construction in E-commerce"
+- Keywords: NER, RE, few-shot learning, domain adaptation
+
+### 💼 **Intégration avec Projets Industriels**
+
+Ce dataset peut servir de **test case** pour :
+- **CIFRE Stellantis** : Construction KG pour compliance automobile
+- **Projets ANR** : "Knowledge Graph" thématique
+- **Partnerships** : Connecteurs vers LLM APIs (OpenAI, Anthropic, local models)
 
 ---
 
