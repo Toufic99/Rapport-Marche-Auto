@@ -80,7 +80,7 @@ Kilométrage Moyen: 156,200 km
 ```
 
 ### Visualisation
-Le rapport généré (`leboncoin_rapport.html`) inclut :
+Le rapport généré inclut :
 - 📋 Tableau filtrable avec 2,955+ annonces
 - 🔍 Recherche en temps réel
 - 📊 Filtres : Prix, Année, Énergie, Type vendeur
@@ -98,8 +98,8 @@ Le rapport généré (`leboncoin_rapport.html`) inclut :
 
 ```bash
 # 1. Cloner le repository
-git clone https://github.com/[TON_USERNAME]/leboncoin-scraper.git
-cd leboncoin-scraper
+git clone https://github.com/[TON_USERNAME]/auto-market-scraper.git
+cd auto-market-scraper
 
 # 2. Créer un environnement virtuel
 python -m venv env
@@ -112,10 +112,10 @@ pip install -r requirements.txt
 ### Utilisation Basique
 
 ```python
-from leboncoin_scraper import LeBonCoinScraper
+from auto_market_scraper import AutoMarketScraper
 
 # Initialiser le scraper
-scraper = LeBonCoinScraper()
+scraper = AutoMarketScraper()
 
 # Lancer le scraping
 scraper.scrape_vehicles(pages=10)  # Scrape 10 pages
@@ -125,8 +125,8 @@ scraper.generate_report()
 ```
 
 **Résultat :** 
-- `leboncoin_vehicles.db` (base de données SQLite)
-- `leboncoin_rapport.html` (rapport interactif)
+- `vehicles.db` (base de données SQLite)
+- `rapport.html` (rapport interactif)
 - `voitures_photos/` (dossier avec images)
 
 ---
@@ -141,19 +141,19 @@ LeBonCoin_Scraper/
 ├── 📄 requirements.txt               # Dépendances Python
 │
 ├── 🐍 CORE SCRAPING
-│   ├── leboncoin_scraper.py          # Scraper principal (853 lignes)
+│   ├── auto_market_scraper.py        # Scraper principal (853 lignes)
 │   ├── report_generator.py           # Génération de rapports
 │   └── stats.py                      # Analyses statistiques
 │
 ├── 📚 DOCUMENTATION & GUIDES
 │   ├── GUIDE_WEB_SCRAPING.md         # Guide complet du scraping
-│   ├── ETUDE_CAS_LEBONCOIN.py        # Cas d'étude détaillé
+│   ├── ETUDE_CAS_MARCHE.py           # Cas d'étude détaillé
 │   └── EXERCICES_SCRAPING.py         # Exercices pratiques
 │
 ├── 📊 DONNÉES (Générées après scraping)
-│   ├── leboncoin_vehicles.db         # Base de données SQLite
-│   ├── leboncoin_rapport.html        # Rapport HTML interactif
-│   ├── leboncoin_rapport_complet.csv # Export CSV
+│   ├── vehicles.db                   # Base de données SQLite
+│   ├── rapport.html                  # Rapport HTML interactif
+│   ├── rapport_complet.csv           # Export CSV
 │   └── voitures_photos/              # Images téléchargées
 │
 └── 📁 AUTRES
@@ -173,7 +173,7 @@ MAX_RETRIES=3
 DELAY_BETWEEN_REQUESTS=2
 
 # Base de données
-DB_PATH=./leboncoin_vehicles.db
+DB_PATH=./vehicles.db
 EXPORT_CSV=True
 
 # Logging
@@ -218,7 +218,7 @@ headers = {
     'User-Agent': 'random',
     'Accept-Language': 'fr-FR,fr;q=0.9',
     'Accept-Encoding': 'gzip, deflate, br',
-    'Referer': 'https://www.leboncoin.fr/',
+    'Referer': 'https://www.marche-auto.com/',
     'DNT': '1',
 }
 ```
@@ -261,7 +261,7 @@ Le rapport HTML généré (`leboncoin_rapport.html`) contient :
 ```
 1. Initialisation du Scraper
    ↓
-2. Scraping des Pages LeBonCoin
+2. Scraping des Pages de Marché
    ├─ Extraction HTML → JSON
    ├─ Validation données
    └─ Sauvegarde SQLite
@@ -292,7 +292,7 @@ Le rapport HTML généré (`leboncoin_rapport.html`) contient :
   - Bonnes pratiques
   - Cas d'étude complet
 
-- **`ETUDE_CAS_LEBONCOIN.py`** : Analyse détaillée du projet
+- **`ETUDE_CAS_MARCHE.py`** : Analyse détaillée du projet
   - Architecture système
   - Choix techniques justifiés
   - Optimisations appliquées
@@ -303,9 +303,9 @@ Le rapport HTML généré (`leboncoin_rapport.html`) contient :
 
 ### Apprendre & Contribuer
 1. Lire `GUIDE_WEB_SCRAPING.md` pour comprendre les concepts
-2. Explorer `leboncoin_scraper.py` pour la mise en œuvre
+2. Explorer `auto_market_scraper.py` pour la mise en œuvre
 3. Tester avec `EXERCICES_SCRAPING.py`
-4. Consulter `ETUDE_CAS_LEBONCOIN.py` pour l'architecture
+4. Consulter `ETUDE_CAS_MARCHE.py` pour l'architecture
 
 ---
 
@@ -338,7 +338,7 @@ Ce projet est sous licence **MIT** - voir le fichier `LICENSE` pour détails.
 
 ## ⚠️ Avertissements Légaux
 
-- **Respectez les conditions d'utilisation** de LeBonCoin.fr
+- **Respectez les conditions d'utilisation** des sites web cibles
 - Utilisez un délai approprié entre les requêtes
 - Ne surchargez pas les serveurs
 - **À usage éducatif/personnel uniquement**
