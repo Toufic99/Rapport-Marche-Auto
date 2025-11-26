@@ -1,0 +1,76 @@
+# 🔐 Fichiers à ignorer (données + configs sensibles)
+
+# DONNÉES SCRAPÉES (à régénérer)
+*.csv
+*.db
+*.sqlite
+voitures_photos/
+leboncoin_rapport*.html
+
+# ENVIRONNEMENT PYTHON
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE & EDITEURS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# VARIABLES ENVIRONNEMENT (SECRETS)
+.env
+.env.local
+.env.*.local
+config.local.py
+
+# LOGS & DEBUG
+*.log
+logs/
+debug/
+
+# OS
+.DS_Store
+Thumbs.db
+.thumbs.db
+
+# TEMPORAIRES
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# TESTING
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# AUTRES PROJETS
+*.zip
+*.tar.gz
+*.rar
