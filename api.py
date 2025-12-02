@@ -1,6 +1,8 @@
 """
-API FastAPI pour LeBonCoin Scraper
-==================================
+Car Analytics API
+==================
+API REST pour l'analyse du marché automobile.
+
 Endpoints disponibles:
 - GET /                 → Accueil
 - GET /vehicles         → Liste tous les véhicules
@@ -17,8 +19,8 @@ from typing import Optional
 
 # Initialiser l'API
 app = FastAPI(
-    title="🚗 LeBonCoin API",
-    description="API pour interroger les données de véhicules scrapées sur LeBonCoin",
+    title="🚗 Car Analytics API",
+    description="API pour l'analyse du marché automobile français",
     version="1.0.0"
 )
 
@@ -41,10 +43,10 @@ def home():
     """Page d'accueil avec documentation"""
     return """
     <html>
-    <head><title>LeBonCoin API</title></head>
+    <head><title>Car Analytics API</title></head>
     <body style="font-family: Arial; max-width: 800px; margin: 50px auto;">
-        <h1>🚗 LeBonCoin API</h1>
-        <p>Bienvenue sur l'API de données automobiles</p>
+        <h1>🚗 Car Analytics API</h1>
+        <p>Bienvenue sur l'API d'analyse du marché automobile</p>
         <h2>Endpoints disponibles :</h2>
         <ul>
             <li><a href="/vehicles">/vehicles</a> - Liste tous les véhicules</li>
