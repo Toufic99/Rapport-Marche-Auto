@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rapport LeBonCoin - 58 véhicules</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 20px; background: #f0f4f8; }
+        .container { max-width: 1500px; margin: 0 auto; }
+        h1 { color: #2563eb; text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 20px; }
+        .controls { text-align: center; margin: 20px 0; }
+        .controls button { background: #2563eb; color: white; border: none; padding: 10px 20px; margin: 0 5px; border-radius: 5px; cursor: pointer; font-size: 14px; }
+        .controls button:hover { background: #1d4ed8; }
+        .controls button:disabled { background: #ccc; cursor: not-allowed; }
+        .controls span { margin: 0 15px; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        th { background: #2563eb; color: white; padding: 12px 8px; text-align: left; position: sticky; top: 0; }
+        td { padding: 10px 8px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #eff6ff; }
+        tr:nth-child(even) { background: #fafafa; }
+        tr:nth-child(even):hover { background: #eff6ff; }
+        .prix { font-weight: bold; color: #2563eb; }
+        .km { color: #666; }
+        .link-btn { background: #2563eb; color: white; padding: 5px 10px; border-radius: 3px; text-decoration: none; font-size: 12px; }
+        .link-btn:hover { background: #1d4ed8; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🚗 Rapport Marché Automobile LeBonCoin</h1>
+    <p class="subtitle">58 véhicules | Généré le 01/12/2025 à 14:09</p>
+    
+    <div class="controls">
+        <button onclick="prevPage()">◀ Précédent</button>
+        <span id="pageInfo">Page 1 / ?</span>
+        <button onclick="nextPage()">Suivant ▶</button>
+        <select id="perPage" onchange="changePerPage()" style="margin-left: 20px; padding: 8px;">
+            <option value="10">10 par page</option>
+            <option value="20" selected>20 par page</option>
+            <option value="50">50 par page</option>
+            <option value="100">Tous</option>
+        </select>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Année</th>
+                <th>Kilométrage</th>
+                <th>Prix</th>
+                <th>Énergie</th>
+                <th>Boîte</th>
+                <th>Ville</th>
+                <th>Dept</th>
+                <th>Annonce</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+<tr class="data-row">
+            <td>BMW</td>
+            <td>Série 3</td>
+            <td>2007</td>
+            <td class="km">300,000 km</td>
+            <td class="prix">6,000 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Hesdigneul-lès-Béthune</td>
+            <td>62</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104122240" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PEUGEOT</td>
+            <td>207</td>
+            <td>2011</td>
+            <td class="km">243,000 km</td>
+            <td class="prix">2,490 €</td>
+            <td>Diesel</td>
+            <td>Elle totalise 243000 km</td>
+            <td>La Chapelle-d'Armentières</td>
+            <td>59</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3102450142" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>CITROEN</td>
+            <td>C-Elysée</td>
+            <td>2015</td>
+            <td class="km">95,000 km</td>
+            <td class="prix">7,990 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Le Lamentin</td>
+            <td>97</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3090299168" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>FIAT</td>
+            <td>500X</td>
+            <td>2019</td>
+            <td class="km">50,328 km</td>
+            <td class="prix">11,990 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Fontcouverte</td>
+            <td>17</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3082810192" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PEUGEOT</td>
+            <td>206</td>
+            <td>2001</td>
+            <td class="km">210,000 km</td>
+            <td class="prix">1,650 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Saint-Romain-en-Gier</td>
+            <td>69</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104122520" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>CITROEN</td>
+            <td>C4 Picasso</td>
+            <td>2013</td>
+            <td class="km">271,000 km</td>
+            <td class="prix">4,600 €</td>
+            <td>Diesel</td>
+            <td>5 990 €</td>
+            <td>Romans-sur-Isère</td>
+            <td>26</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104124417" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>SKODA</td>
+            <td>Fabia</td>
+            <td>2024</td>
+            <td class="km">22,500 km</td>
+            <td class="prix">15,990 €</td>
+            <td>Essence</td>
+            <td>OPTIONS ET EQUIPEMENTS :</td>
+            <td>Pamiers</td>
+            <td>09</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104123893" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>FORD</td>
+            <td>Focus</td>
+            <td>2023</td>
+            <td class="km">23,160 km</td>
+            <td class="prix">23,977 €</td>
+            <td>Diesel</td>
+            <td>OPTIONS ET EQUIPEMENTS :</td>
+            <td>Seyssinet-Pariset</td>
+            <td>38</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3074377665" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>KIA</td>
+            <td>Soul</td>
+            <td>2014</td>
+            <td class="km">39,000 km</td>
+            <td class="prix">44,500 €</td>
+            <td>Diesel</td>
+            <td>Puissance fiscale : 7 CV</td>
+            <td>Narbonne</td>
+            <td>11</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104124214" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PEUGEOT</td>
+            <td>4008</td>
+            <td>2015</td>
+            <td class="km">160,000 km</td>
+            <td class="prix">10,000 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Dijon</td>
+            <td>21</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3103356597" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>FORD</td>
+            <td>Puma</td>
+            <td>2021</td>
+            <td class="km">2,025 km</td>
+            <td class="prix">13,400 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Angoulême</td>
+            <td>16</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104123842" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>TOYOTA</td>
+            <td>Land Cruiser</td>
+            <td>1988</td>
+            <td class="km">250,000 km</td>
+            <td class="prix">4,500 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>La Boisse</td>
+            <td>01</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104124430" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>Série 1</td>
+            <td>2180</td>
+            <td class="km">218,000 km</td>
+            <td class="prix">11,500 €</td>
+            <td>Diesel</td>
+            <td>Je suis en incapacité financière de la réparé.</td>
+            <td>Ombrée d'Anjou</td>
+            <td>49</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104124274" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>RENAULT</td>
+            <td>Megane</td>
+            <td>2016</td>
+            <td class="km">112,000 km</td>
+            <td class="prix">9,500 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Montmélian</td>
+            <td>73</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3067537225" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>TOYOTA</td>
+            <td>Corolla Verso</td>
+            <td>2008</td>
+            <td class="km">252,000 km</td>
+            <td class="prix">5,000 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Chambéry</td>
+            <td>73</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104124343" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>RENAULT</td>
+            <td>Clio</td>
+            <td>1997</td>
+            <td class="km">127,000 km</td>
+            <td class="prix">650 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Dax</td>
+            <td>40</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104103022" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>X4</td>
+            <td>2018</td>
+            <td class="km">88,000 km</td>
+            <td class="prix">26,900 €</td>
+            <td>Diesel</td>
+            <td>Automatique</td>
+            <td>-</td>
+            <td>-</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3099938572" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>VOLKSWAGEN</td>
+            <td>Golf</td>
+            <td>2019</td>
+            <td class="km">68,000 km</td>
+            <td class="prix">18,800 €</td>
+            <td>Essence</td>
+            <td>25 500 €</td>
+            <td>Beaurepaire</td>
+            <td>38</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104123855" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>TOYOTA</td>
+            <td>RAV4</td>
+            <td>2003</td>
+            <td class="km">205,000 km</td>
+            <td class="prix">1,800 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Lagny-sur-Marne</td>
+            <td>77</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104123728" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>CITROEN</td>
+            <td>C4</td>
+            <td>2024</td>
+            <td class="km">8,650 km</td>
+            <td class="prix">17,990 €</td>
+            <td>Essence</td>
+            <td>Automatique</td>
+            <td>Angers</td>
+            <td>49</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3083013456" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>MINI</td>
+            <td>Clubman</td>
+            <td>2011</td>
+            <td class="km">206,000 km</td>
+            <td class="prix">6,500 €</td>
+            <td>Diesel</td>
+            <td>Automatique</td>
+            <td>Grande-Synthe</td>
+            <td>59</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104116595" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>CITROEN</td>
+            <td>C4 SpaceTourer</td>
+            <td>2019</td>
+            <td class="km">130,906 km</td>
+            <td class="prix">8,990 €</td>
+            <td>Essence</td>
+            <td>8 290 €</td>
+            <td>Angers</td>
+            <td>49</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3100202354" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>X3</td>
+            <td>2025</td>
+            <td class="km">4,000 km</td>
+            <td class="prix">81,990 €</td>
+            <td>Hybride Rechargeable</td>
+            <td>Automatique</td>
+            <td>Mérignac</td>
+            <td>33</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3100290991" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>AUDI</td>
+            <td>A4</td>
+            <td>2008</td>
+            <td class="km">235,000 km</td>
+            <td class="prix">6,400 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Fosses</td>
+            <td>95</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138716" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PORSCHE</td>
+            <td>Macan</td>
+            <td>2015</td>
+            <td class="km">118,000 km</td>
+            <td class="prix">38,900 €</td>
+            <td>Diesel</td>
+            <td>Automatique</td>
+            <td>Vétraz-Monthoux</td>
+            <td>74</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138230" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>Série 3</td>
+            <td>2025</td>
+            <td class="km">8,000 km</td>
+            <td class="prix">60,950 €</td>
+            <td>Hybride Rechargeable</td>
+            <td>Automatique</td>
+            <td>Mérignac</td>
+            <td>33</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3100290979" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>Série 1</td>
+            <td>2020</td>
+            <td class="km">73,000 km</td>
+            <td class="prix">29,500 €</td>
+            <td>Diesel</td>
+            <td>Automatique</td>
+            <td>Clermont-Ferrand</td>
+            <td>63</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138391" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>AUDI</td>
+            <td>RS4</td>
+            <td>2007</td>
+            <td class="km">120,000 km</td>
+            <td class="prix">27,000 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Saint-Brès</td>
+            <td>34</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138748" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>Série 6</td>
+            <td>2005</td>
+            <td class="km">156,100 km</td>
+            <td class="prix">15,500 €</td>
+            <td>Essence</td>
+            <td>Automatique</td>
+            <td>Godoncourt</td>
+            <td>88</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3068386192" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>KIA</td>
+            <td>Niro</td>
+            <td>2021</td>
+            <td class="km">54,000 km</td>
+            <td class="prix">18,490 €</td>
+            <td>Hybride</td>
+            <td>19 990 €</td>
+            <td>Monts</td>
+            <td>37</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3101396611" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PEUGEOT</td>
+            <td>2008</td>
+            <td>2017</td>
+            <td class="km">82,200 km</td>
+            <td class="prix">8,000 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Bosroumois</td>
+            <td>27</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138199" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>TOYOTA</td>
+            <td>C-HR</td>
+            <td>2025</td>
+            <td class="km">15,000 km</td>
+            <td class="prix">26,800 €</td>
+            <td>Hybride</td>
+            <td>Automatique</td>
+            <td>Toulouse</td>
+            <td>31</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138442" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>MITSUBISHI</td>
+            <td>Pajero</td>
+            <td>2003</td>
+            <td class="km">250,000 km</td>
+            <td class="prix">17,000 €</td>
+            <td>Diesel</td>
+            <td>Automatique</td>
+            <td>Escaudain</td>
+            <td>59</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3034066680" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>RENAULT</td>
+            <td>Grand Scenic</td>
+            <td>2004</td>
+            <td class="km">200,000 km</td>
+            <td class="prix">1,100 €</td>
+            <td>Diesel</td>
+            <td>- Nombre de portes : 5</td>
+            <td>Réguiny</td>
+            <td>56</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138906" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>RENAULT</td>
+            <td>Clio</td>
+            <td>2001</td>
+            <td class="km">249,166 km</td>
+            <td class="prix">2,750 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Selles-sur-Cher</td>
+            <td>41</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138359" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>MERCEDES-BENZ</td>
+            <td>Classe GLA</td>
+            <td>2014</td>
+            <td class="km">159,600 km</td>
+            <td class="prix">15,000 €</td>
+            <td>Essence</td>
+            <td>Automatique</td>
+            <td>Saint-Nazaire</td>
+            <td>44</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138422" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PORSCHE</td>
+            <td>Cayman</td>
+            <td>2006</td>
+            <td class="km">84,000 km</td>
+            <td class="prix">29,990 €</td>
+            <td>Essence</td>
+            <td>Automatique</td>
+            <td>Jouars-Pontchartrain</td>
+            <td>78</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138538" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PEUGEOT</td>
+            <td>208</td>
+            <td>2014</td>
+            <td class="km">83,000 km</td>
+            <td class="prix">10,000 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Cros-de-Géorand</td>
+            <td>07</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3056602509" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>Série 1</td>
+            <td>2024</td>
+            <td class="km">15,346 km</td>
+            <td class="prix">24,499 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Mérignac</td>
+            <td>33</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3092627075" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>CITROEN</td>
+            <td>C3</td>
+            <td>2012</td>
+            <td class="km">170,000 km</td>
+            <td class="prix">3,400 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Roubaix</td>
+            <td>59</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138368" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>AUDI</td>
+            <td>S5</td>
+            <td>2013</td>
+            <td class="km">123,000 km</td>
+            <td class="prix">24,999 €</td>
+            <td>Essence</td>
+            <td>Tous les filtres remplacés</td>
+            <td>Sigean</td>
+            <td>11</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138274" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>i3</td>
+            <td>2022</td>
+            <td class="km">44,996 km</td>
+            <td class="prix">18,999 €</td>
+            <td>Électrique</td>
+            <td>Automatique</td>
+            <td>Mérignac</td>
+            <td>33</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3075200213" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>FIAT</td>
+            <td>Tipo</td>
+            <td>2017</td>
+            <td class="km">117,234 km</td>
+            <td class="prix">8,790 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Roujan</td>
+            <td>34</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3086982093" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>BMW</td>
+            <td>X1</td>
+            <td>2024</td>
+            <td class="km">34,763 km</td>
+            <td class="prix">47,999 €</td>
+            <td>Hybride Rechargeable</td>
+            <td>Automatique</td>
+            <td>Mérignac</td>
+            <td>33</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3082953158" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>VOLKSWAGEN</td>
+            <td>Eos</td>
+            <td>2007</td>
+            <td class="km">179,000 km</td>
+            <td class="prix">4,500 €</td>
+            <td>Diesel</td>
+            <td>Automatique</td>
+            <td>Talange</td>
+            <td>57</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138819" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>AUDI</td>
+            <td>A3</td>
+            <td>2010</td>
+            <td class="km">164,557 km</td>
+            <td class="prix">7,890 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Chelles</td>
+            <td>77</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138727" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>MERCEDES-BENZ</td>
+            <td>Classe A</td>
+            <td>2023</td>
+            <td class="km">35,872 km</td>
+            <td class="prix">29,900 €</td>
+            <td>Essence</td>
+            <td>Automatique</td>
+            <td>La Motte-Servolex</td>
+            <td>73</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3046657508" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>ALFA ROMEO</td>
+            <td>Brera</td>
+            <td>2006</td>
+            <td class="km">155,000 km</td>
+            <td class="prix">10,990 €</td>
+            <td>Essence</td>
+            <td>9 500 €</td>
+            <td>Monts</td>
+            <td>37</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3098233097" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>RENAULT</td>
+            <td>Clio</td>
+            <td>2011</td>
+            <td class="km">165,000 km</td>
+            <td class="prix">3,790 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Nogent-sur-Oise</td>
+            <td>60</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138089" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PEUGEOT</td>
+            <td>Rifter</td>
+            <td>2021</td>
+            <td class="km">86,846 km</td>
+            <td class="prix">15,990 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Vieux-Condé</td>
+            <td>59</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3064541826" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>RENAULT</td>
+            <td>Megane</td>
+            <td>2012</td>
+            <td class="km">121,000 km</td>
+            <td class="prix">14,950 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Bordeaux</td>
+            <td>33</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3033305725" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>PEUGEOT</td>
+            <td>308</td>
+            <td>2021</td>
+            <td class="km">195,000 km</td>
+            <td class="prix">8,900 €</td>
+            <td>Diesel</td>
+            <td>7 990 €</td>
+            <td>Lambersart</td>
+            <td>59</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104138801" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>CITROEN</td>
+            <td>Berlingo</td>
+            <td>2024</td>
+            <td class="km">34,877 km</td>
+            <td class="prix">29,990 €</td>
+            <td>Diesel</td>
+            <td>Automatique</td>
+            <td>Champniers</td>
+            <td>16</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3062310848" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>CITROEN</td>
+            <td>C1</td>
+            <td>2019</td>
+            <td class="km">45,500 km</td>
+            <td class="prix">8,990 €</td>
+            <td>Essence</td>
+            <td>Manuelle</td>
+            <td>Déville-lès-Rouen</td>
+            <td>76</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3064214328" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>AUDI</td>
+            <td>RS6</td>
+            <td>2020</td>
+            <td class="km">37,816 km</td>
+            <td class="prix">119,990 €</td>
+            <td>Essence</td>
+            <td>Automatique</td>
+            <td>Verson</td>
+            <td>14</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/2987221955" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>CITROEN</td>
+            <td>DS3</td>
+            <td>2015</td>
+            <td class="km">111,456 km</td>
+            <td class="prix">7,990 €</td>
+            <td>Diesel</td>
+            <td>Automatique</td>
+            <td>-</td>
+            <td>-</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104153430" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>RENAULT</td>
+            <td>Clio</td>
+            <td>2016</td>
+            <td class="km">140,000 km</td>
+            <td class="prix">8,100 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>-</td>
+            <td>-</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104153480" target="_blank" class="link-btn">Voir</a></td>
+        </tr><tr class="data-row">
+            <td>RENAULT</td>
+            <td>Clio</td>
+            <td>2010</td>
+            <td class="km">230,170 km</td>
+            <td class="prix">2,900 €</td>
+            <td>Diesel</td>
+            <td>Manuelle</td>
+            <td>Florange</td>
+            <td>57</td>
+            <td><a href="https://www.leboncoin.fr/ad/voitures/3104153335" target="_blank" class="link-btn">Voir</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+let currentPage = 1;
+let perPage = 20;
+const rows = document.querySelectorAll('.data-row');
+const totalRows = rows.length;
+
+function showPage(page) {
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    
+    rows.forEach((row, index) => {
+        if (index >= start && index < end) {
+            row.classList.remove('hidden');
+        } else {
+            row.classList.add('hidden');
+        }
+    });
+    
+    const totalPages = Math.ceil(totalRows / perPage);
+    document.getElementById('pageInfo').textContent = `Page ${page} / ${totalPages}`;
+}
+
+function nextPage() {
+    const totalPages = Math.ceil(totalRows / perPage);
+    if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+    }
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+    }
+}
+
+function changePerPage() {
+    perPage = parseInt(document.getElementById('perPage').value);
+    if (perPage === 100) perPage = totalRows; // "Tous"
+    currentPage = 1;
+    showPage(currentPage);
+}
+
+// Initialisation
+showPage(1);
+</script>
+</body>
+</html>

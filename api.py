@@ -25,7 +25,7 @@ app = FastAPI(
 )
 
 # Chemin de la base de données
-DB_PATH = Path(__file__).parent / "data" / "leboncoin.db"
+DB_PATH = Path(__file__).parent / "data" / "vehicles.db"
 
 
 def get_db():
@@ -74,7 +74,7 @@ def get_vehicles(
     cursor = conn.cursor()
     
     cursor.execute("""
-        SELECT id, leboncoin_id, marque, modele, annee, km, prix, 
+        SELECT id, source_id, marque, modele, annee, km, prix, 
                energie, boite_vitesse, ville, departement, lien
         FROM vehicles
         ORDER BY id DESC

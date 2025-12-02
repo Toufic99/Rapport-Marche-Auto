@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # ===========================================
+  # SCRAPER - Collecte les données LeBonCoin
+  # ===========================================
+  scraper:
+    build: .
+    container_name: leboncoin-scraper
+    volumes:
+      - ./data:/app/data          # Persister la base SQLite
+      - ./voitures_photos:/app/voitures_photos  # Persister les photos
+      - ./logs:/app/logs          # Logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Lancer manuellement avec: docker-compose run scraper
+
+  # ===========================================
+  # API - FastAPI pour exposer les données
+  # ===========================================
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: leboncoin-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - scraper
+    restart: unless-stopped
+
+  # ===========================================
+  # DASHBOARD - (Futur: Streamlit ou Grafana)
+  # ===========================================
+  # dashboard:
+  #   image: grafana/grafana
+  #   ports:
+  #     - "3000:3000"
+
+volumes:
+  data:
+  photos:
