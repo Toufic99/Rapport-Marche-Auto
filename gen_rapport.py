@@ -154,5 +154,5 @@ showPage(1);
 </body>
 </html>'''
 
-Path('leboncoin_rapport.html').write_text(html, encoding='utf-8')
+Path('car_analytics_rapport.html').write_text(html, encoding='utf-8')
 print('[OK] Rapport régénéré avec', len(df), 'véhicules!')

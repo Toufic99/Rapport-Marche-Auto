@@ -1,5 +1,5 @@
 """
-LEBONCOIN AUTO PIPELINE v2.0
+CAR ANALYTICS PIPELINE v2.0
 ============================
 Pipeline complet avec:
 - Scraping Selenium + Anti-détection (undetected-chromedriver)
@@ -36,8 +36,8 @@ DATA_DIR.mkdir(exist_ok=True)
 PHOTOS_DIR = Path("voitures_photos")
 PHOTOS_DIR.mkdir(exist_ok=True)
 
-DB_PATH = DATA_DIR / "leboncoin.db"
-REPORT_PATH = "leboncoin_rapport.html"
+DB_PATH = DATA_DIR / "vehicles.db"
+REPORT_PATH = "car_analytics_rapport.html"
 
 # Logging
 logging.basicConfig(
@@ -58,9 +58,9 @@ def random_delay(min_sec=2, max_sec=5):
     """Délai aléatoire pour simuler un humain"""
     time.sleep(random.uniform(min_sec, max_sec))
 
-def download_photos(driver, leboncoin_id):
+def download_photos(driver, source_id):
     """Télécharge les photos d'une annonce"""
-    photos_folder = PHOTOS_DIR / f"vehicle_{leboncoin_id}"
+    photos_folder = PHOTOS_DIR / f"vehicle_{source_id}"
     photos_folder.mkdir(exist_ok=True)
     
     downloaded = []
@@ -133,7 +133,7 @@ def init_database():
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS vehicles (
         id INTEGER PRIMARY KEY,
-        leboncoin_id TEXT UNIQUE,
+        source_id TEXT UNIQUE,
         titre TEXT,
         prix REAL,
         lien TEXT,
@@ -237,7 +237,7 @@ def task_scrape(max_pages=1, max_annonces=50):
                 
                 data = {
                     'lien': url,
-                    'leboncoin_id': url.split('/')[-1],
+                    'source_id': url.split('/')[-1],
                     'date_scrape': datetime.now().isoformat()
                 }
                 
@@ -308,9 +308,9 @@ def task_scrape(max_pages=1, max_annonces=50):
                         data['couleur'] = next_line
                 
                 # 📸 Télécharger les photos
-                photos = download_photos(driver, data['leboncoin_id'])
+                photos = download_photos(driver, data['source_id'])
                 data['nb_photos'] = len(photos)
-                data['photos_path'] = str(PHOTOS_DIR / f"vehicle_{data['leboncoin_id']}")
+                data['photos_path'] = str(PHOTOS_DIR / f"vehicle_{data['source_id']}")
                 
                 vehicles.append(data)
                 logger.info(f"      → {data.get('marque', '?')} | {data.get('ville', '?')} | {data.get('prix', '?')}€ | 📸 {len(photos)} photos")
@@ -324,11 +324,11 @@ def task_scrape(max_pages=1, max_annonces=50):
         
         for v in vehicles:
             c.execute('''INSERT OR REPLACE INTO vehicles 
-                (leboncoin_id, titre, prix, lien, marque, modele, annee, km,
+                (source_id, titre, prix, lien, marque, modele, annee, km,
                  energie, boite_vitesse, couleur, ville, code_postal, departement, 
                  nb_photos, photos_path, date_scrape)
                 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',
-                (v.get('leboncoin_id'), v.get('titre'), v.get('prix'), v.get('lien'),
+                (v.get('source_id'), v.get('titre'), v.get('prix'), v.get('lien'),
                  v.get('marque'), v.get('modele'), v.get('annee'), v.get('km'),
                  v.get('energie'), v.get('boite_vitesse'), v.get('couleur'),
                  v.get('ville'), v.get('code_postal'), v.get('departement'),

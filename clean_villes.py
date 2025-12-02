@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('data/leboncoin.db')
+conn = sqlite3.connect('data/vehicles.db')
 c = conn.cursor()
 
 # Nettoyer les villes parasites
