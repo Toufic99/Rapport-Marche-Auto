@@ -12,8 +12,25 @@ TripoEnv/
 logs/
 *.log
 
-# Photos (trop volumineuses)
+# ==========================================
+# DATA FILES - Ne pas commiter sur GitHub !
+# ==========================================
+# Base de données
+data/
+*.db
+
+# Fichiers CSV
+*.csv
+
+# Rapports HTML générés
+*_rapport.html
+car_analytics_rapport.html
+
+# Photos
 voitures_photos/
+
+# Debug files
+debug_html.txt
 
 # IDE
 .vscode/
