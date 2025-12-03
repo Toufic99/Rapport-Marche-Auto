@@ -174,7 +174,8 @@ def task_scrape(max_pages=1, max_annonces=50):
     options.add_argument('--disable-notifications')
     
     try:
-        driver = uc.Chrome(options=options)
+        # Forcer la version de ChromeDriver compatible avec Chrome 142
+        driver = uc.Chrome(options=options, version_main=142)
         logger.info("[OK] Chrome démarré (anti-détection activée)")
     except Exception as e:
         logger.error(f"[FAIL] Impossible de démarrer Chrome: {e}")
