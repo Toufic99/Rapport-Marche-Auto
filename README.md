@@ -1,226 +1,203 @@
-# 🚗 LEBONCOIN SCRAP BEAUTIFUL - SYSTÈME COMPLET & INNOVANT
+# 🚗 Car Analytics - Pipeline ETL & API REST
 
-## ✨ FONCTIONNALITÉS
+## 📋 Description
 
-### 1. **Scraping Intelligent**
-- ✅ Récupère les annonces de voitures de LeBonCoin
-- ✅ Numéro ID unique pour chaque voiture (#1, #2, etc.)
-- ✅ Extraction automatique: marque, modèle, prix, description
-- ✅ **Téléchargement des photos** dans dossier `voitures_photos/`
+**Car Analytics** est un système complet d'analyse du marché automobile français. Il collecte, traite et expose des données de véhicules via une API REST déployée dans le cloud.
 
-### 2. **Suivi des Annonces**
-- ✅ **Détection automatique des ventes** (annonce disparue = vendue)
-- ✅ Colonne **STATUT**: ACTIVE ou VENDUE
-- ✅ **Date de vente** enregistrée automatiquement
-- ✅ **Durée de vente**: Jours entre annonce et vente
-- ✅ **Historique des prix** en base de données
+### 🎯 Fonctionnalités principales
 
-### 3. **Base de Données SQLite**
-- **leboncoin_vehicles.db** contient:
-  - Table `vehicles`: Infos complètes de chaque voiture
-  - Table `price_history`: Historique des prix
-  - Table `photos`: Références des photos téléchargées
-  
-### 4. **Rapports Générés**
-- **leboncoin_rapport_complet.csv**: Export complet avec tous les détails
-- **leboncoin_rapport.html**: Rapport visuel avec statistiques
-- Données mises à jour à CHAQUE scraping
-
-### 5. **Mise à Jour Automatique - 2x PAR JOUR**
-- **08:00 (Matin)**: Premier scraping
-- **18:00 (Soir)**: Deuxième scraping
-- Détection des changements entre matin et soir
-- Historique complet disponible
+- **Pipeline ETL** : Scraping → Validation → Transformation → Stockage
+- **API REST** : Endpoints pour interroger les données
+- **Anti-détection** : Contourne les protections des sites web
+- **Déploiement Cloud** : API accessible 24/7
+- **Rapports HTML** : Visualisation interactive des données
 
 ---
 
-## 🚀 LANCEMENT RAPIDE
-
-### Option 1: TEST IMMÉDIAT
-```powershell
-cd C:\Users\User\OneDrive\Desktop\TripoDATA
-.\TripoEnv\Scripts\python.exe leboncoin_scrap_beautiful.py
-```
-
-### Option 2: PLANIFICATION AUTOMATIQUE (Recommandé)
-
-**Étape 1: Ouvrir PowerShell EN TANT QU'ADMINISTRATEUR**
-
-**Étape 2: Exécuter le script de création des tâches**
-```powershell
-cd C:\Users\User\OneDrive\Desktop\TripoDATA
-powershell -ExecutionPolicy Bypass -File create_tasks.ps1
-```
-
-**Résultat:** Deux tâches créées (8h et 18h) ✓
-
----
-
-## 📊 FICHIERS GÉNÉRÉS
-
-| Fichier | Description |
-|---------|-------------|
-| `leboncoin_vehicles.db` | Base de données SQLite complète |
-| `leboncoin_rapport_complet.csv` | Export CSV (Excel) |
-| `leboncoin_rapport.html` | Rapport visuel (statistiques) |
-| `voitures_photos/` | Dossier avec toutes les photos |
-
----
-
-## 📈 DONNÉES DISPONIBLES PAR VOITURE
-
-Pour chaque voiture scrapée:
+## 🏗️ Architecture
 
 ```
-ID:                    #1, #2, #3, ...
-Titre:                 "Renault Clio 1.5 dCi 75cv"
-Marque:                "Renault"
-Modèle:                "Clio"
-Prix Initial:          8500 €
-Prix Actuel:           8500 € (peut changer)
-Prix Historique:       [8500, 8400, 8300...] (SQLite)
-Statut:                ACTIVE ou VENDUE
-Date Annonce:          2025-11-19
-Date Première Vue:     2025-11-19 17:06:04
-Date Dernière Vue:     2025-11-19 18:30:15
-Date Vendu:            2025-11-20 08:15:00
-Jours en Vente:        1 jour
-Lien Annonce:          https://www.leboncoin.fr/vo/...
-Photos:                photo_1.jpg, photo_2.jpg...
-Description Complète:  [Texte complet de l'annonce]
+┌─────────────────────────────────────────────────────────────┐
+│                     PIPELINE ETL                            │
+├─────────────────────────────────────────────────────────────┤
+│  1. SCRAPE    →  Collecte des annonces (Selenium)           │
+│  2. VALIDATE  →  Vérification qualité des données           │
+│  3. TRANSFORM →  Nettoyage et normalisation                 │
+│  4. LOAD      →  Stockage SQLite + Rapport HTML             │
+└─────────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────────┐
+│                      API REST                               │
+├─────────────────────────────────────────────────────────────┤
+│  GET /vehicles      →  Liste des véhicules                  │
+│  GET /search        →  Recherche avec filtres               │
+│  GET /stats         →  Statistiques du marché               │
+│  GET /docs          →  Documentation Swagger                │
+└─────────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────────┐
+│                   CLOUD (Render)                            │
+│           https://car-analytics-api.onrender.com            │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🔍 ANALYSES POSSIBLES
+## 🛠️ Technologies utilisées
 
-Avec ces données, tu peux:
-
-1. **Prix moyen par marque** → Comparer Renault vs Peugeot vs autres
-2. **Temps de vente moyen** → Quelle voiture se vend vite?
-3. **Tendance des prix** → Prix qui baisse = urgence de vendre?
-4. **Alertes de prix** → Notifier si prix baisse de 500€
-5. **Marques tendance** → Quelles voitures se vendent le plus?
-6. **Âge vs Prix** → Années par rapport au prix
+| Catégorie | Technologies |
+|-----------|--------------|
+| **Langage** | Python 3.13 |
+| **Scraping** | Selenium, undetected-chromedriver |
+| **API** | FastAPI, Uvicorn |
+| **Base de données** | SQLite |
+| **Containerisation** | Docker |
+| **Cloud** | Render |
+| **CI/CD** | GitHub (auto-deploy) |
 
 ---
 
-## 🛠️ COMMANDES UTILES
+## 📁 Structure du projet
 
-### Voir les tâches planifiées
-```powershell
-Get-ScheduledTask -TaskName "LeBonCoin*" | Select-Object TaskName, State
 ```
-
-### Exécuter maintenant (matin)
-```powershell
-Start-ScheduledTask -TaskName "LeBonCoin Scraper Morning"
-```
-
-### Exécuter maintenant (soir)
-```powershell
-Start-ScheduledTask -TaskName "LeBonCoin Scraper Evening"
-```
-
-### Voir l'historique d'exécution
-```powershell
-Get-ScheduledTaskInfo -TaskName "LeBonCoin Scraper Morning"
-```
-
-### Supprimer les tâches
-```powershell
-Unregister-ScheduledTask -TaskName "LeBonCoin Scraper Morning" -Confirm:$false
-Unregister-ScheduledTask -TaskName "LeBonCoin Scraper Evening" -Confirm:$false
-```
-
-### Ouvrir le rapport visuel
-```powershell
-Start-Process leboncoin_rapport.html
-```
-
-### Ouvrir la base de données (SQLite)
-```powershell
-# Télécharger DB Browser for SQLite depuis:
-# https://sqlitebrowser.org/
-# Puis ouvrir leboncoin_vehicles.db
+Car-Analytics/
+├── pipeline.py          # 🔄 Pipeline ETL principal
+├── api.py               # 🚀 API FastAPI
+├── run.py               # 🎮 Menu interactif
+├── gen_rapport.py       # 📊 Générateur de rapport HTML
+├── data/
+│   └── vehicles.db      # 💾 Base de données SQLite
+├── Dockerfile.api       # 🐳 Config Docker
+├── requirements.txt     # 📦 Dépendances Python
+└── README.md            # 📖 Documentation
 ```
 
 ---
 
-## 💡 EXEMPLE DE WORKFLOW QUOTIDIEN
+## 🚀 Installation & Utilisation
 
+### 1. Cloner le repo
+```bash
+git clone https://github.com/Toufic99/Rapport-Marche-Auto.git
+cd Rapport-Marche-Auto
 ```
-08:00 ─► MATIN
-  ├─ leboncoin_scrap_beautiful.py exécuté
-  ├─ Scrape LeBonCoin
-  ├─ Détecte 10 nouvelles voitures
-  ├─ Détecte 2 voitures vendues
-  ├─ Mise à jour BD
-  └─ Rapport généré
 
-18:00 ─► SOIR
-  ├─ leboncoin_scrap_beautiful.py exécuté (2ème fois)
-  ├─ Scrape LeBonCoin
-  ├─ Détecte 5 nouvelles voitures
-  ├─ Détecte 3 voitures vendues
-  ├─ Mise à jour BD
-  └─ Rapport généré (mis à jour)
+### 2. Installer les dépendances
+```bash
+pip install -r requirements.txt
+```
 
-RESULTAT:
-  - 15 nouvelles voitures du jour
-  - 5 voitures vendues du jour
-  - Historique complet en BD
-  - Données prêtes pour analyse
+### 3. Lancer le menu interactif
+```bash
+python run.py
+```
+
+### 4. Ou lancer directement le pipeline
+```bash
+python pipeline.py --pages 5
 ```
 
 ---
 
-## 🎯 PROCHAINES ÉTAPES POSSIBLES
+## 🌐 API en ligne
 
-1. **Alertes Email** → Être notifié des baisse de prix
-2. **Dashboard Web** → Interface web pour visualiser les données
-3. **API** → Accéder aux données via API REST
-4. **ML/Prédictions** → Prédire le prix de vente optimal
-5. **Notifications** → Alerter quand une voiture spécifique se vend
-6. **Export PowerBI** → Analyser avec Power BI
+**URL** : https://car-analytics-api.onrender.com
 
----
+### Endpoints disponibles
 
-## 📝 NOTES IMPORTANTES
+| Endpoint | Description | Exemple |
+|----------|-------------|---------|
+| `GET /` | Page d'accueil | - |
+| `GET /vehicles` | Liste tous les véhicules | `/vehicles?limit=10` |
+| `GET /vehicles/{id}` | Détails d'un véhicule | `/vehicles/1` |
+| `GET /search` | Recherche avec filtres | `/search?marque=BMW&prix_max=15000` |
+| `GET /stats` | Statistiques du marché | - |
+| `GET /docs` | Documentation Swagger | - |
 
-- ✅ Le système est **entièrement automatisé**
-- ✅ Les données sont **persistantes** (BD SQLite)
-- ✅ Les photos sont **sauvegardées localement**
-- ✅ L'historique est **conservé** (voitures + prix)
-- ✅ **Zéro configuration supplémentaire** après création des tâches
-- ⚠️ Les tâches nécessitent **PowerShell EN TANT QU'ADMIN** pour être créées
+### Paramètres de recherche
 
----
-
-## 🆘 TROUBLESHOOTING
-
-### Les tâches ne se créent pas
-- ✓ Vérifier que PowerShell est exécuté EN TANT QU'ADMINISTRATEUR
-- ✓ Utiliser le script `create_tasks.ps1` (pas le .bat)
-
-### La scraping échoue
-- ✓ Vérifier la connexion Internet
-- ✓ Vérifier que LeBonCoin n'a pas changé sa structure HTML
-- ✓ Vérifier les logs dans le fichier python
-
-### Base de données corrompue
-- ✓ Supprimer `leboncoin_vehicles.db` et relancer
-- ✓ Les données seront rescrapées à nouveau
+- `marque` : Filtrer par marque (BMW, PEUGEOT, RENAULT...)
+- `modele` : Filtrer par modèle
+- `prix_min` / `prix_max` : Fourchette de prix
+- `km_max` : Kilométrage maximum
+- `annee_min` : Année minimum
+- `energie` : Type de carburant (Diesel, Essence, Électrique)
+- `ville` : Ville
+- `departement` : Département (ex: 75, 86)
 
 ---
 
-## 📞 SUPPORT
+## 📊 Données collectées
 
-Les erreurs courantes:
-- `'charmap' codec` → Encodage Windows (géré dans le code)
-- `module not found` → Vérifier les imports et packages
-- `Access denied` → Exécuter PowerShell EN TANT QU'ADMIN
+Pour chaque véhicule :
+
+| Champ | Description |
+|-------|-------------|
+| `marque` | Marque du véhicule |
+| `modele` | Modèle |
+| `annee` | Année de mise en circulation |
+| `prix` | Prix en euros |
+| `km` | Kilométrage |
+| `energie` | Type de carburant |
+| `boite_vitesse` | Manuelle / Automatique |
+| `ville` | Ville de l'annonce |
+| `departement` | Département |
+| `lien` | Lien vers l'annonce originale |
 
 ---
 
-**Créé avec ❤️ pour un scraping innovant et performant !**
+## 🎮 Menu interactif (run.py)
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║                  🚗 CAR ANALYTICS                            ║
+╠══════════════════════════════════════════════════════════════╣
+║   [1] 🔄 Scraper MAINTENANT                                  ║
+║   [2] ⏰ Programmer scraping AUTOMATIQUE                      ║
+║   [3] 📊 Voir les STATISTIQUES                               ║
+║   [4] 📄 Générer RAPPORT HTML                                ║
+║   [5] 🌐 Ouvrir l'API en ligne                               ║
+║   [6] 📤 Pousser vers GitHub                                 ║
+║   [0] ❌ Quitter                                             ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## 🐳 Docker
+
+### Build l'image
+```bash
+docker build -f Dockerfile.api -t car-analytics-api .
+```
+
+### Lancer le container
+```bash
+docker run -p 8000:8000 car-analytics-api
+```
+
+---
+
+## 📈 Compétences démontrées
+
+- ✅ **Web Scraping** avancé avec anti-détection
+- ✅ **Pipeline ETL** (Extract, Transform, Load)
+- ✅ **API REST** avec FastAPI
+- ✅ **Base de données** SQLite
+- ✅ **Containerisation** Docker
+- ✅ **Déploiement Cloud** (Render)
+- ✅ **Git/GitHub** & CI/CD
+
+---
+
+## 👤 Auteur
+
+**Toufic BATHICH**
+
+- GitHub: [@Toufic99](https://github.com/Toufic99)
+
+---
+
+## 📝 License
+
+MIT License - Libre d'utilisation
