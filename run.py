@@ -45,25 +45,34 @@ def print_menu():
 def scrape_now():
     """Option 1: Scraper maintenant"""
     clear_screen()
-    print("\n🔄 SCRAPER MAINTENANT\n")
+    print("\n🔄 SCRAPER MAINTENANT - VERSION OPTIMISÉE v3.0\n")
     print("-" * 40)
     
-    try:
-        pages = int(input("📄 Nombre de pages à scraper [1-10]: ") or "2")
-        pages = max(1, min(10, pages))
-    except:
-        pages = 2
+    print("Mode de scraping:")
+    print("[1] CIBLÉ (recommandé) - Recherches multiples variées")
+    print("[2] GÉNÉRAL - Recherche unique classique")
+    mode_choice = input("\nTon choix [1/2]: ").strip() or "1"
+    mode = "targeted" if mode_choice == "1" else "general"
     
     try:
-        annonces = int(input("🚗 Max annonces par page [10-50]: ") or "20")
-        annonces = max(10, min(50, annonces))
+        pages = int(input("\n📄 Pages par recherche [1-20]: ") or "10")
+        pages = max(1, min(20, pages))
     except:
-        annonces = 20
+        pages = 10
     
-    print(f"\n✅ Configuration: {pages} pages, max {annonces} annonces")
-    print("🚀 Lancement du scraper...\n")
+    try:
+        annonces = int(input("🚗 Max annonces total [50-500]: ") or "200")
+        annonces = max(50, min(500, annonces))
+    except:
+        annonces = 200
     
-    subprocess.run([sys.executable, "pipeline.py", "--pages", str(pages)])
+    print(f"\n✅ Configuration:")
+    print(f"   Mode: {mode.upper()}")
+    print(f"   Pages/recherche: {pages}")
+    print(f"   Max annonces: {annonces}")
+    print("\n🚀 Lancement du scraper optimisé...\n")
+    
+    subprocess.run([sys.executable, "pipeline.py", "--pages", str(pages), "--max", str(annonces), "--mode", mode])
     
     input("\n⏎ Appuie sur Entrée pour continuer...")
 
